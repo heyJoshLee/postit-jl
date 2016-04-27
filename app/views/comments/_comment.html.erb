@@ -1,4 +1,4 @@
 <div class="well span8">
   <%= comment.body %> > <br />
-  <small >by <%= link_to comment.creator.username, "#" %> on <%= comment.created_at %> </small>
+  <small >by <%= link_to comment.creator.username, "#" %> on <%= format_datetime(comment.created_at) %> </small>
 </div>

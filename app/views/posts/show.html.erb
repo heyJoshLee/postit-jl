@@ -4,7 +4,7 @@
 
 <%= render "shared/title_header", title: @post.title %>
 
-<%= link_to @post.url %> <br /> 
+<%= link_to format_url(@post.url) %> <br /> 
 
  <% if @post.body %>
   <p class="well"> <%= @post.body %> </p>
