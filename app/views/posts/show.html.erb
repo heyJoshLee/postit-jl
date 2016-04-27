@@ -1,3 +1,6 @@
-<%= render "shared/title_header", title: @post.title %>
+<%= render "shared/title_header", title: @post.title %> 
+<small> <%= link_to "Edit", edit_post_path(@post) %> </small>
+
+<br>
 
 <%= render @post.categories %>
