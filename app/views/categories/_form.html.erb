@@ -1,0 +1,12 @@
+<%= form_for @category, html: {class: "well"} do |f| %>
+
+  <%= render "shared/errors", obj: @category %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <br />
+
+  <%= f.submit "Create Category", class: "btn btn-primary" %>
+
+<% end  %>

@@ -1,17 +1,16 @@
-<%= form_for @post do |f| %>
-  <% if @post.errors.any? %>
-    <div class="alert alert-error">
-      <ul>
-        <% @post.errors.full_messages.each do |msg| %>
-        <li> <%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= form_for @post, html: {class: "well" } do |f| %>
+
+   <%= render "shared/errors", obj: @post %>
+
+
   <%= f.label :title %>
   <%= f.text_field :title %>
+  
   <%= f.label :url %>
   <%= f.text_field :url %>
+
+  <%= f.label :body %>
+  <%= f.text_field :body %>
   <br>
-  <%= f.submit button_text, class: "btn btn-primary" %>
+  <%= f.submit(@post.new_record? ? "Create Post" : "Update Post", class: "btn btn-primary") %>
 <% end %>

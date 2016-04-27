@@ -16,6 +16,8 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+
+    @post.creator = User.first
     if @post.save
       flash[:success] = "Your post has been saved"
       redirect_to post_path(@post)
@@ -35,6 +37,8 @@ class PostsController < ApplicationController
       render :edit
     end
   end 
+
+  private
 
   def post_params
     params.require(:post).permit!

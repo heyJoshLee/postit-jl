@@ -1,6 +1,14 @@
-<%= render "shared/title_header", title: @post.title %> 
-<small> <%= link_to "Edit", edit_post_path(@post) %> </small>
+<p class="pull-right">
+  <small> <%= link_to "Edit Post", edit_post_path(@post) %> </small> <br />
+</p>
+<%= render "shared/title_header", title: @post.title %>
+<%= link_to @post.url, @post.url %> <br /> 
+
+<p class="well"> <%= @post.body %> </p>
 
 <br>
 
+
 <%= render @post.categories %>
+
+
