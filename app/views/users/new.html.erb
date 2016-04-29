@@ -1,0 +1,14 @@
+<%= form_for @user, html: {class: "well span8"} do |f| %>
+
+<%= render "shared/errors", obj: @user %>
+
+<%= f.label :username %>
+<%= f.text_field :username %>
+
+<%= f.label :password %>
+<%= f.password_field :password %>
+
+<br />
+<%= f.submit "Register account", class: "btn btn-primary" %>
+
+<% end %>

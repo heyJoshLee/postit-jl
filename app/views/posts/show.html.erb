@@ -1,6 +1,10 @@
-<p class="pull-right">
-  <small> <%= link_to "Edit Post", edit_post_path(@post) %> </small> <br />
-</p>
+ <% if belongs_to_user(@post) %> 
+    <p class="pull-right">
+      <small> <%= link_to "Edit Post", edit_post_path(@post) %> </small> <br />
+    </p>
+ <% end %>
+
+
 
 <%= render "shared/title_header", title: @post.title %>
 
