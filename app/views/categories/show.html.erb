@@ -1,8 +1,29 @@
 <% header = link_to("All Posts ", posts_path) + "&raquo; #{@category.name}".html_safe %>
 <%= render "shared/title_header", title: header %>
 
-<% @category.posts.each do |post| %>
+<%= form_tag("/posts", method: "GET") do %>
+  Sort by <span> Dropdown </span>
+  <%= submit_tag "Search", class: "btn btn-primary btn-xs" %>
+<% end %>
 
-  <%= render "posts/post", post: post %>
+<% if @posts.length > 0 %>
+  <%= render @posts %>
+<% else %>
 
-<% end %> 
+<div class="row">
+  <div class="well span8">
+    <p>Sorry there are no more posts.</p>
+  </div>
+</div>
+
+<% end %>
+
+<div class="row">
+  <% if @page.to_i > 1 %>
+    <a href="/categories/<%=@category.id%>?page=<%= @page.to_i - 1 %>" class="btn btn-xs">previous</a>
+  <% end %>
+  <button class="btn btn-xs btn-primary"><%= @page %></button>
+  <% if @posts.length >= @limit %>
+    <a href="/categories/<%=@category.id%>?page=<%= @page.to_i + 1 %>" class="btn btn-xs">next</a>
+  <% end  %>
+</div>

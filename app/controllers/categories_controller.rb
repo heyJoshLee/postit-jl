@@ -20,6 +20,12 @@ class CategoriesController < ApplicationController
 
   def show 
     @category = Category.find(params[:id ])
+
+    @page = params[:page] || 1
+    @limit = 2
+    offset = @page.to_i > 1 ? @limit * (@page.to_i - 1) : 0
+    @posts = @category.posts.order(created_at: :desc).limit(@limit).offset(offset)
+
   end
 
 

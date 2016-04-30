@@ -4,7 +4,10 @@ class PostsController < ApplicationController
   before_action :require_user, except: [:index, :show, :edit, :vote]
 
   def index
-    @posts = Post.all
+    @page = params[:page] || 1
+    @limit = 2
+    offset = @page.to_i > 1 ? @limit * (@page.to_i - 1) : 0
+    @posts = Post.order(created_at: :desc).limit(@limit).offset(offset)
   end
 
 

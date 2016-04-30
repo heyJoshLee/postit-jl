@@ -1,3 +1,28 @@
 <%= render "shared/title_header", title: "All posts" %>
 
-<%= render @posts %>
+<%= form_tag("/posts", method: "GET") do %>
+  Sort by <span> Dropdown </span>
+  <%= submit_tag "Search", class: "btn btn-primary btn-xs" %>
+<% end %>
+
+<% if @posts.length > 0 %>
+  <%= render @posts %>
+<% else %>
+
+<div class="row">
+  <div class="well span8">
+    <p>Sorry there are no more posts.</p>
+  </div>
+</div>
+
+<% end %>
+
+<div class="row">
+  <% if @page.to_i > 1 %>
+    <a href="/?page=<%= @page.to_i - 1 %>" class="btn btn-xs">previous</a>
+  <% end %>
+  <button class="btn btn-xs btn-primary"><%= @page %></button>
+  <% if @posts.length >= @limit %>
+    <a href="/?page=<%= @page.to_i + 1 %>" class="btn btn-xs">next</a>
+  <% end  %>
+</div>
