@@ -18,12 +18,4 @@
 
 <% end %>
 
-<div class="row">
-  <% if @page.to_i > 1 %>
-    <a href="/categories/<%=@category.id%>?page=<%= @page.to_i - 1 %>" class="btn btn-xs">previous</a>
-  <% end %>
-  <button class="btn btn-xs btn-primary"><%= @page %></button>
-  <% if @posts.length >= @limit %>
-    <a href="/categories/<%=@category.id%>?page=<%= @page.to_i + 1 %>" class="btn btn-xs">next</a>
-  <% end  %>
-</div>
+<%= render "shared/pagination", href: "/categories/#{@category.id}" %>
