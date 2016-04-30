@@ -20,8 +20,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
-   def belongs_to_user(post)
-    post.creator == User.find(session[:user_id])
+  def belongs_to_user(post)
+    post.creator == User.find(session[:user_id]) if logged_in?
   end
 
 

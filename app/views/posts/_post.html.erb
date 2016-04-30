@@ -1,18 +1,24 @@
 <div class="row">
   <div class="well span0">
-    <%= link_to vote_post_path(post, vote: true), method: "post" do %>
-      <i class="icon-arrow-up"></i>
+
+    <% if logged_in? %> 
+      <%= link_to vote_post_path(post, vote: true), method: "post", remote: true do %>
+        <i class="icon-arrow-up"></i>
+      <% end %>
     <% end %>
-  <p>
-    <%= post.total_votes %>
+
+  <p class="text-center">
+    <span id="post_<%=post.id%>_votes"><%= post.total_votes %></span>
   </p>
-    <%= link_to vote_post_path(post, vote: false), method: "post" do %>
-      <i class="icon-arrow-down"></i>
+    
+    <% if logged_in? %>
+      <%= link_to vote_post_path(post, vote: false), method: "post", remote: true do %>
+        <i class="icon-arrow-down"></i>
+      <% end %>
     <% end %>
+</div>
 
 
-
-  </div>
 
   <div class="span8 well">
 

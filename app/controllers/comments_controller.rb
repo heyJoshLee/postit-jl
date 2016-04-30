@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
+
+  before_action :set_post, only: [:create]
   def create
-    @post = Post.find(params[:post_id])
     @comment = @post.comments.build(comment_params)
     @comment.creator = User.find(session[:user_id])
 
@@ -10,7 +11,15 @@ class CommentsController < ApplicationController
     else
       render "posts/show"
     end
+  end
 
+  def vote
+    @comment = Comment.find(params[:id])
+    @vote = Vote.create(voteable: @comment, creator: current_user, vote: params[:vote])
+    respond_to do |format|
+      # format.html { redirect_to :back, notice: "Your vote has been saved"}
+      format.js
+    end 
 
   end
 
@@ -18,6 +27,12 @@ class CommentsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit!
+  end
+
+  private
+
+  def set_post
+    @post = Post.find(params[:post_id])
   end
 
 end

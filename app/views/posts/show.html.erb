@@ -4,9 +4,8 @@
     </p>
  <% end %>
 
-
-
 <%= render "shared/title_header", title: @post.title %>
+<h5>by <%= link_to @post.creator.username, user_path(@post.creator) %></h5>
 
 <%= link_to format_url(@post.url) %> <br /> 
 

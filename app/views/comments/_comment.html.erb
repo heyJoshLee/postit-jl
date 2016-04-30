@@ -1,4 +1,30 @@
-<div class="well span8">
-  <%= comment.body %> > <br />
-  <small >by <%= link_to comment.creator.username, user_path(comment.creator) %> on <%= format_datetime(comment.created_at) %> </small>
+<div class="row">
+
+  <div class="well span0">
+
+    <% if logged_in? %>
+      <%= link_to vote_post_comment_path(@post, comment, vote: true), method: "post", remote: true do %>
+        <i class="icon-arrow-up"></i>
+      <% end %>
+    <% end %>
+
+  <p class="text-center">
+    <span id="post_<%=comment.id%>_votes"><%= comment.total_votes %></span>
+  </p>
+    <% if logged_in? %>
+      <%= link_to vote_post_comment_path(@post, comment, vote: false), method: "post", remote: true do %>
+        <i class="icon-arrow-down"></i>
+      <% end %>
+    <% end %>
+  </div>
+
+
+  <div class="well span8">
+    <%  show_title ||= false
+        if show_title %>
+      <h5>On <%= link_to comment.post.title, post_path(comment.post) %> </h5>
+    <% end %>
+    <p><%= comment.body %></p>
+    <small >by <%= link_to comment.creator.username, user_path(comment.creator) %> on <%= format_datetime(comment.created_at) %> </small>
+  </div>
 </div>
