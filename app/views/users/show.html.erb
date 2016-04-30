@@ -4,9 +4,20 @@
 <%= link_to "(edit)", edit_user_path(current_user) %>
 <% end %>
 
-<h5>Posts by <%= @user.username %></h5>
-<%= render @user.posts %>
 
-<h5>Comments by <%= @user.username %></h5>
+<ul class="nav nav-tabs">
+  <li role="presentation" data-tab="posts" class="user_tab"><a href="#">Posts</a></li>
+  <li role="presentation" data-tab="comments" class="user_tab"><a href="#">Comments</a></li>
+  <li role="presentation" data-tab="saved" class="user_tab"><a href="#">Saved </a></li>
+</ul>
 
-<%= render @user.comments, show_title: true %>
+<div id="show_posts" class="user_articles">
+  <h5>Posts by <%= @user.username %></h5>
+  <%= render @user.posts %>
+</div>
+
+<div id="show_comments" class="user_articles">
+  <h5>Comments by <%= @user.username %></h5>
+  <%= render @user.comments, show_title: true %>
+
+</div>

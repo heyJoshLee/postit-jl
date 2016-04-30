@@ -16,3 +16,19 @@
 //= require_tree .
 //= require bootstrap
 
+
+$(function() {
+  $(".nav li").click(function(e) {
+    e.preventDefault();
+    var $tar = $(e.target),
+        $data_tag = $tar.parent("li").attr("data-tab");
+    //tag
+    $(".user_tab").removeClass("active");
+    $tar.parent("li").addClass("active");
+    // posts, comment, saved sections
+    $(".user_articles").hide();
+    $("#show_" + $data_tag).show();
+  });
+
+})
+
