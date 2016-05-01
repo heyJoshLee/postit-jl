@@ -6,7 +6,9 @@ class User < ActiveRecord::Base
 
   has_secure_password validations: false
 
-  validates :username, presence: true, uniqueness: true
+  validates :username, presence: true
+  validates_uniqueness_of :username, case_sensitive: false
+
   validates :password, presence: true, on: :create
 
   sluggable_column :username

@@ -8,7 +8,7 @@
 <ul class="nav nav-tabs">
   <li role="presentation" data-tab="posts" class="user_tab active"><a href="#">Posts</a></li>
   <li role="presentation" data-tab="comments" class="user_tab"><a href="#">Comments</a></li>
-  <li role="presentation" data-tab="saved" class="user_tab"><a href="#">Saved </a></li>
+  <!-- <li role="presentation" data-tab="saved" class="user_tab"><a href="#">Saved </a></li> -->
 </ul>
 
 <div id="show_posts" class="user_articles">
@@ -21,7 +21,9 @@
   <%= render @user.comments, show_title: true %>
 </div>
 
+<!--
 <div id="show_saved" class="user_articles">
   <h5><%= @user.username %>'s saved</h5>
   <p>This are saved</p>
 </div>
+-->
