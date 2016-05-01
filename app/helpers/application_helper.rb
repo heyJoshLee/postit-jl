@@ -12,7 +12,7 @@ module ApplicationHelper
 
 
   def shorten_body(body)
-    body[0...140] + "..."
+   body.length < 240 ? body : body[0..2137] + "..."
   end
   
 end
