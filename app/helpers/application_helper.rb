@@ -10,5 +10,9 @@ module ApplicationHelper
       dt.strftime("%m/%d/%Y %I:%M%P %Z")
   end
 
+
+  def shorten_body(body)
+    body[0...140] + "..."
+  end
   
 end
