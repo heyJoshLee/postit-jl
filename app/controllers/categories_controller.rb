@@ -1,6 +1,7 @@
 class CategoriesController < ApplicationController
 
   before_action :set_new_category, only: [:new]
+  before_action :set_category, only: [:show]
   before_action :require_user, only: [:new, :create]
 
   def new
@@ -19,19 +20,15 @@ class CategoriesController < ApplicationController
   end
 
   def show 
-    @category = Category.find_by( slug: params[:id ])
 
-    @page = params[:page] || 1
-    @limit = params[:limit] || 5
-    @limit = @limit.to_i
+    set_query
 
-    order_method = params[:sort_order] ? params[:sort_order].to_sym : :desc
-
-    offset = @page.to_i > 1 ? @limit * (@page.to_i - 1) : 0
-
-    @posts = @category.posts.order(created_at: order_method).limit(@limit).offset(offset)
+    @posts = @category.posts.order(created_at: @order_method).limit(@limit).offset(@offset)
   end
 
+  def set_category
+      @category = Category.find_by( slug: params[:id ])
+  end
 
   def category_params
     params.require(:category).permit!

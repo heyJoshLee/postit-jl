@@ -24,6 +24,14 @@ class ApplicationController < ActionController::Base
     post.creator == User.find(session[:user_id]) if logged_in?
   end
 
+  def set_query
+    @page = params[:page] || 1
+    @limit = params[:limit] || 5
+    @limit = @limit.to_i
+    @order_method = params[:sort_order] ? params[:sort_order].to_sym : :desc
+    @offset = @page.to_i > 1 ? @limit * (@page.to_i - 1) : 0
+  end
+
 
 
 end
