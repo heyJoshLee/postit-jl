@@ -11,15 +11,20 @@
  <% end %>
 
 
-<%= render "shared/title_header", title: @post.title %>
+<% if !@post.url.blank? %>
+  <%= link_to format_url(@post.url) do %>
+    <%= render "shared/title_header", title: @post.title %>
+  <% end %>
+<% else %>
+  <%= render "shared/title_header", title: @post.title %>
+<% end %>
 
 <p> By
   <%= render "users/link_to_profile", obj: @post %>
 </p>
 
-<%= link_to format_url(@post.url) %> <br /> 
 
- <% if @post.body %>
+ <% if !@post.body.blank? %>
   <div class="row">
     <div class="well span8">
       <p> 
