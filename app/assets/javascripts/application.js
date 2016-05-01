@@ -18,7 +18,7 @@
 
 
 $(function() {
-  $(".nav li").click(function(e) {
+  $(".user_tab").click(function(e) {
     e.preventDefault();
     var $tar = $(e.target),
         $data_tag = $tar.parent("li").attr("data-tab");

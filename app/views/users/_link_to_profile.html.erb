@@ -1,0 +1,5 @@
+ <% if obj.creator %>
+  <%= link_to obj.creator.username, user_path(obj.creator) %>
+<% else %>
+  deleted
+<% end %>

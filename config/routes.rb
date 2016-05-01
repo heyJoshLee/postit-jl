@@ -8,7 +8,7 @@ PostitTemplate::Application.routes.draw do
 
   resources :users, only: [:create, :show, :edit, :update]
 
-  resources :posts, except: [:destroy] do
+  resources :posts  do
     member do 
       post :vote
     end

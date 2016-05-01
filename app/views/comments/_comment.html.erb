@@ -25,6 +25,8 @@
       <h5>On <%= link_to comment.post.title, post_path(comment.post) %> </h5>
     <% end %>
     <p><%= comment.body %></p>
-    <small >by <%= link_to comment.creator.username, user_path(comment.creator) %> on <%= format_datetime(comment.created_at) %> </small>
+    <small >by <%= render "users/link_to_profile", obj: comment %>
+
+      on <%= format_datetime(comment.created_at) %> </small>
   </div>
 </div>

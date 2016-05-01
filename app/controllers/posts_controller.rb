@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
 
-  before_action :set_post, only: [:show, :edit, :update, :vote]
+  before_action :set_post, only: [:show, :edit, :update, :vote, :destroy]
   before_action :require_user, except: [:index, :show, :edit, :vote]
 
   def index
@@ -54,6 +54,13 @@ class PostsController < ApplicationController
       format.js
     end 
 
+  end
+
+  def destroy
+    @post.destroy
+    flash[:notice] = "Post deleted"
+
+    redirect_to root_path
   end
 
   private

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :require_user, except: [:show, :new, :create]
+  before_action :require_user, only: [:update]
   before_action :set_user, only: [:show, :edit, :update]
 
   def new
@@ -19,8 +19,11 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.role = "none"
     if @user.save
-      flash[:notce] = "You are now signed up!"
+      flash[:notce] = "You are now signed up and logged in!"
+     
+      session[:user_id] = @user.id
       redirect_to root_path
     else
       render :new

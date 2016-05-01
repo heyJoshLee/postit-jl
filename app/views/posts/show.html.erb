@@ -5,7 +5,10 @@
  <% end %>
 
 <%= render "shared/title_header", title: @post.title %>
-<h5>by <%= link_to @post.creator.username, user_path(@post.creator) %></h5>
+
+<p> By
+  <%= render "users/link_to_profile", obj: @post %>
+</p>
 
 <%= link_to format_url(@post.url) %> <br /> 
 
@@ -20,23 +23,26 @@
 
  <% end %>
 
-
 <br>
 
 
 <%= render @post.categories %>
 
+<% if logged_in? %>
 
-<br />
-<br />
+  <%= form_for [@post, @comment] do |f| %>
+    <%= render "shared/errors", obj: @comment %>
+    <%= f.label :body, "New Comment" %>
+    <%= f.text_area :body, rows: 5, class: "span4" %>
+    <br /> 
 
-<%= form_for [@post, @comment] do |f| %>
-  <%= render "shared/errors", obj: @comment %>
-  <%= f.label :body, "New Comment" %>
-  <%= f.text_area :body, rows: 5, class: "span4" %>
-  <br /> 
+    <%= f.submit "Submit Comment", class: "btn btn-primary" %>
+  <% end %>
 
-  <%= f.submit "Submit Comment", class: "btn btn-primary" %>
+<% else %>
+
+<div class="well"><%= link_to "Please log in to post a comment", login_path %></div>
+
 <% end %>
 
 <%= render @post.comments %>
