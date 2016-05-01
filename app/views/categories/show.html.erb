@@ -1,10 +1,8 @@
 <% header = link_to("All Posts ", posts_path) + "&raquo; #{@category.name}".html_safe %>
 <%= render "shared/title_header", title: header %>
 
-<%= form_tag("/posts", method: "GET") do %>
-  Sort by <span> Dropdown </span>
-  <%= submit_tag "Search", class: "btn btn-primary btn-xs" %>
-<% end %>
+<%= render "shared/sort_bar", path: category_path(@category) %>
+
 
 <% if @posts.length > 0 %>
   <%= render @posts %>
@@ -18,4 +16,4 @@
 
 <% end %>
 
-<%= render "shared/pagination", href: "/categories/#{@category.id}" %>
+<%= render "shared/pagination", href: "/categories/#{@category.slug}" %>

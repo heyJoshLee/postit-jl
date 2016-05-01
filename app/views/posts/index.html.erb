@@ -1,9 +1,6 @@
 <%= render "shared/title_header", title: "All posts" %>
 
-<%= form_tag("/posts", method: "GET") do %>
-  Sort by <span> Dropdown </span>
-  <%= submit_tag "Search", class: "btn btn-primary btn-xs" %>
-<% end %>
+<%= render "shared/sort_bar", path: posts_path %>
 
 <% if @posts.length > 0 %>
   <%= render @posts %>

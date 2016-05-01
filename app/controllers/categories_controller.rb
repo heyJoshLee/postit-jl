@@ -22,10 +22,14 @@ class CategoriesController < ApplicationController
     @category = Category.find_by( slug: params[:id ])
 
     @page = params[:page] || 1
-    @limit = 2
-    offset = @page.to_i > 1 ? @limit * (@page.to_i - 1) : 0
-    @posts = @category.posts.order(created_at: :desc).limit(@limit).offset(offset)
+    @limit = params[:limit] || 5
+    @limit = @limit.to_i
 
+    order_method = params[:sort_order] ? params[:sort_order].to_sym : :desc
+
+    offset = @page.to_i > 1 ? @limit * (@page.to_i - 1) : 0
+
+    @posts = @category.posts.order(created_at: order_method).limit(@limit).offset(offset)
   end
 
 

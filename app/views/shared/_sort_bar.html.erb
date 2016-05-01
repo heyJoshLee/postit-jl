@@ -1,0 +1,7 @@
+<%= form_tag(path, method: "GET") do %>
+  <span>Sort by</span>
+  <%= select_tag(:sort_order, options_for_select([["Newest", "desc"], ["Oldest", "asc"]])) %>
+  <span>Results per page</span>
+  <%= select_tag(:limit, options_for_select([["5", 5], ["10", 10], ["20", 20], ["30", 30]])) %>
+  <%= submit_tag "Search", class: "btn btn-primary btn-xs" %>
+<% end %>

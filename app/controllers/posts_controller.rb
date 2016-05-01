@@ -5,9 +5,14 @@ class PostsController < ApplicationController
 
   def index
     @page = params[:page] || 1
-    @limit = 2
+    @limit = params[:limit] || 5
+    @limit = @limit.to_i
+
+    order_method = params[:sort_order] ? params[:sort_order].to_sym : :desc
+
     offset = @page.to_i > 1 ? @limit * (@page.to_i - 1) : 0
-    @posts = Post.order(created_at: :desc).limit(@limit).offset(offset)
+
+    @posts = Post.order(created_at: order_method).limit(@limit).offset(offset)
   end
 
 
