@@ -1,58 +1,468 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>The page you were looking for doesn't exist (404)</title>
+  <title>We're sorry, but something went wrong (500)</title>
   <style>
-  body {
-    background-color: #EFEFEF;
-    color: #2E2F30;
-    text-align: center;
-    font-family: arial, sans-serif;
-  }
+@import url(https://fonts.googleapis.com/css?family=Kanit:400,900);
+@import url(https://fonts.googleapis.com/css?family=Economica);
 
-  div.dialog {
-    width: 25em;
-    margin: 4em auto 0 auto;
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    background-color: white;
-    padding: 7px 4em 0 4em;
-  }
+html, body, main {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  background: url("http://fastsignsinla.co/wp-content/uploads/2015/11/tabletop-background-with-table-top-photo-background-wood-table-top-background-wood-table.jpg") 0 0 no-repeat;
+  background-size: cover;
+}
 
-  h1 {
-    font-size: 100%;
-    color: #730E15;
-    line-height: 1.5em;
-  }
+a {
+  margin-left: 10px;
+  color: white;
+}
 
-  body > p {
-    width: 33em;
-    margin: 0 auto 1em;
-    padding: 1em 0;
-    background-color: #F7F7F7;
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-bottom-color: #999;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-top-color: #DADADA;
-    color: #666;
-    box-shadow:0 3px 8px rgba(50, 50, 50, 0.17);
-  }
+#top_row,
+#bottom_row {
+  width: 100%;
+  position: relative;
+}
+
+#game-container {
+  position: relative;
+}
+
+#quads {
+  position: relative;
+  margin: auto;
+  text-align: center;
+  width: 830px;
+  padding: 30px;
+  height: 800px;
+  border-radius: 100%;
+  background: #2d2b2b;
+
+}
+
+#menu_area {
+  position: absolute;
+  top: 240px;
+  left: 245px;
+  width: 400px;
+  border-radius: 100%;
+  height: 400px;
+  background: white;
+  box-sizing: border-box;
+  border: 40px solid #2d2b2b;
+}
+
+#menu_info {
+  position: absolute;
+  width: 100%;  
+}
+
+#menu_info h1 {
+  font-family: 'Kanit', sans-serif;
+  font-size: 66px;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+#menu_info ul li {
+  vertical-align: middle;
+}
+
+#menu_info li + li {
+  margin-left: 60px;
+}
+
+#button_row {
+  vertical-align: middle
+}
+
+#count_display {
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#720505+0,000000+100 */
+  background: #720505; /* Old browsers */
+  background: -moz-radial-gradient(center, ellipse cover,  #720505 0%, #000000 100%); /* FF3.6-15 */
+  background: -webkit-radial-gradient(center, ellipse cover,  #720505 0%,#000000 100%); /* Chrome10-25,Safari5.1-6 */
+  background: radial-gradient(ellipse at center,  #720505 0%,#000000 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#720505', endColorstr='#000000',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  color: white;
+  width: 40px;
+  text-align: center;
+  padding: 6px;
+  color: red;
+  box-sizing: border-box;
+  height: 30px;
+}
+
+
+#count_display:after,
+#start_button:after,
+#strict_button:after {
+  display: block;
+  color: black;
+  position: relative;
+  font-family: "Economica";
+}
+
+#count_display:after {
+  top: 10px;
+  left: -2px;
+  content: "COUNT";
+}
+
+#start_button:after {
+  top: 35px;
+  left: -2px;
+  content: "NEW";
+}
+
+#strict_button:after {
+  top: 35px;
+  left: -2px;
+  content: "STRICT";
+}
+
+#on_off_switch {
+  position: relative;
+  border-radius: 10%;
+  width: 60px;
+  height: 30px;
+  background: black;
+  margin: 50px auto 0;
+}
+
+#on_off_switch:before,
+#on_off_switch:after {
+  height: 20px;
+  width: 20px;
+  position: relative;
+  font-family: "Economica";
+  font-weight: bold;
+  display: block;
+}
+
+#on_off_switch:before {
+  top: 4px;
+  left: -30px;
+  content: "OFF";
+}
+
+#on_off_switch:after {
+  top: -15px;
+  left: 70px;
+  content: "ON";
+}
+
+#switch {
+  width: 30px;
+  height: 30px;
+  top: 0px;
+  position: absolute;
+  background: #7f98f4;
+  -webkit-box-shadow: inset 0px 0px 300px 22px rgba(255,255,255,1);
+  -moz-box-shadow: inset 0px 0px 300px 22px rgba(255,255,255,1);
+  box-shadow: inset 0px 0px 10px 2px #666363 ;
+  border-top-left-radius: 10%;
+  border-bottom-left-radius: 10%;
+
+}
+
+.button_on {
+  -webkit-box-shadow: inset 1px 2px 10px 0px rgba(0,0,100,0.75) !important;
+  -moz-box-shadow: inset 1px 2px 10px 0px rgba(0,0,100,0.75) !important;
+  box-shadow: inset 1px 2px 10px 0px rgba(0,0,100,0.75) !important;
+  border-top-right-radius: 0%;
+  border-bottom-right-radius: 0%;
+}
+
+.switch_on {
+  left: 30px;
+  border-top-right-radius: 10%;
+  border-bottom-right-radius: 10%;
+  border-top-left-radius: 0%;
+  border-bottom-left-radius: 0%;
+}
+
+.quad {
+  position: relative;
+  width: 400px;
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  height: 400px;
+  border: 8px solid #2d2b2b; 
+  box-sizing: border-box;
+}
+
+#quad_1 {
+  background: #34a843;
+  border-top-left-radius: 100%;
+}
+
+#quad_2 {
+  background: #bc3e3e;
+  border-top-right-radius: 100%;
+
+}
+
+#quad_3 {
+  background: #c4bd38;
+  border-bottom-left-radius: 100%;
+}
+
+#quad_4 {
+  background: #6757bf;
+  border-bottom-right-radius: 100%;
+}
+
+#button_row li {
+  display: inline-block;
+}
+
+#start_button,
+#strict_button {
+  width: 30px;
+  height: 30px;
+}
+
+#start_button,
+#strict_button {
+  border-radius: 100%;
+  -webkit-box-shadow: 1px 2px 10px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 1px 2px 10px 0px rgba(0,0,0,0.75);
+  box-shadow: 1px 2px 10px 0px rgba(0,0,0,0.75);
+}
+
+#start_button {
+  background: red;
+}
+
+#strict_button {
+  background: yellow;
+}
+
+.on {
+  -webkit-box-shadow: inset 0px 0px 300px 22px rgba(255,255,255,1);
+  -moz-box-shadow: inset 0px 0px 300px 22px rgba(255,255,255,1);
+  box-shadow: inset 0px 0px 300px 22px rgba(255,255,255,1);
+}
+
+.center {
+  text-align: center;
+  margin: 0 auto;
+  font-family: Arial;
+  color: black;
+}
+
+.center a {
+  color: black;
+}
+
   </style>
+  
 </head>
 
 <body>
-  <!-- This file lives in public/404.html -->
-  <div class="dialog">
-    <h1>The page you were looking for doesn't exist.</h1>
-    <p>You may have mistyped the address or the page may have moved.</p>
-  </div>
-  <p>If you are the application owner check the logs for more information.</p>
+  <main>
+    <div class="center">
+      <h1> Something went wrong</h1>
+      <h4>In the mean time why don't you play a game?</h4>
+      <p>Or <a href="http://postit-joshlee.herokuapp.com/"> try the home page<a/></p>
+    </div>
+    <div id="game_container">
+      <div id="quads">
+        <div id="top_row">
+          <div class="quad" id="quad_1" data-id="1"></div>
+          <div class="quad" id="quad_2" data-id="2"></div>
+        </div>
+        <div id="bottom_row">
+          <div class="quad" id="quad_3" data-id="3"></div>
+          <div class="quad" id="quad_4" data-id="4"></div>
+        </div>
+         <div id="menu_area">
+
+        <div id="menu_info">
+          <h1>Simon</h1>
+          <ul id="button_row">
+            <li id="count_display">00</li>
+            <li id="start_button"></li>
+            <li id="strict_button"></li>
+          </ul>
+         
+        </div>
+
+      </div>
+      </div>
+     
+    </div>
+    <a href="https://github.com/jleewebdev">Made by josh</a>
+  </main>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
+  <script>
+
+
+function Game() {
+}
+
+Game.prototype.init = function() {
+  console.log("new game");
+  this.sequence = [];
+  this.$count_box = $("#count_display");
+  this.updateCountBox();
+  this.playerPresses = [];
+  this.canInput = false;
+  this.correct = true;
+  this.speed = 800;
+  this.timer;
+}
+
+Game.prototype.clickQuad = function(id) {
+  var quad = $("#quad_" + id );
+  quad.addClass('on');
+  setTimeout(function(){
+    quad.removeClass("on");
+  }, 400);
+}
+
+Game.prototype.updateCountBox = function() {
+  this.$count_box.html(this.sequence.length);
+}
+
+Game.prototype.addPress = function() {
+  var num = Math.floor(Math.random() * 4) + 1;
+  this.sequence.push(num);
+  this.updateCountBox();
+  console.log("Added: " + num);
+}
+
+Game.prototype.playSequence = function() {
+  var i = 0,
+      self = this;
+  function nextButton() {
+    if (i < self.sequence.length) {
+      console.log(self.sequence[i]);
+      self.clickQuad(self.sequence[i]);
+      console.log("audio" + self.sequence[i]);
+
+      self["audio" + +self.sequence[i]].play();
+      i++;
+
+      setTimeout(nextButton, game.speed);
+    } else {
+      self.canInput = true;
+    }
+  }
+  nextButton();
+}
+
+Game.prototype.startTurn = function() {
+  game.canInput = false;
+
+ if(this.sequence.length > 19 ){
+  alert("You Win!");
+  this.init();
+ }
+
+  this.playerPresses = [];
+  if (this.correct) {
+    if (this.sequence.length === 5) {
+      this.speed -= 100;
+    } else if (this.sequence.length  === 9) {
+      this.speed -= 100;
+    } else if (this.sequence.length === 13){
+      this.speed -= 100;
+    }
+    this.addPress();
+  }
+  var self = this;
+  setTimeout(function() {
+    self.playSequence();
+
+  }, 1000);
+}
+
+var game = new Game();
+game.audio1 = new Audio("https://s3.amazonaws.com/freecodecamp/simonSound4.mp3");
+game.audio2 = new Audio("https://s3.amazonaws.com/freecodecamp/simonSound3.mp3");
+game.audio3 = new Audio("https://s3.amazonaws.com/freecodecamp/simonSound2.mp3");
+game.audio4 = new Audio("https://s3.amazonaws.com/freecodecamp/simonSound1.mp3");
+game.audio_error = new Audio("http://www.pacdv.com/sounds/interface_sound_effects/beep-5.wav");
+
+
+game.init();
+game.strict = false;
+
+
+function lightUp(idx) {
+  var quad = $("#quad_" + +idx);
+  quad.addClass('on');
+  setTimeout(function(){
+    quad.removeClass("on")
+  }, 300)
+};
+
+$("#on_off_switch").on("click", function() {
+  $("#switch").toggleClass("switch_on");
+  game.strict = !game.strict;
+  console.log(game.strict);
+});
+
+$("#strict_button").on("click", function() {
+  $(this).toggleClass('button_on');
+});
+
+$("#strict_button").on("click", function() {
+  game.strict = !game.strict;
+  console.log(game.strict)
+});
+
+$("#start_button").on("click", function() {
+  game.init();
+  game.startTurn();
+});
+
+$(".quad").on("mousedown", function() {
+  if (game.canInput) {
+    $(this).addClass("on");
+    var id = +$(this).attr("data-id");
+    game.playerPresses.push(id);
+    var idx = game.playerPresses.length - 1;
+    if (game.playerPresses[idx] === game.sequence[idx]) {
+      game.correct = true;
+      game["audio" + id].play();
+    
+
+    } else {
+      game.correct = false;
+      game.audio_error.play();
+      game.canInput = false;
+      if (game.strict) {
+         game.init();
+      } else {
+        game.startTurn();
+      }
+    }
+    if (game.playerPresses.length === game.sequence.length) {
+      game.canInput = false;
+      if (game.correct) {
+        game.startTurn();
+      }
+    }
+  }
+});
+
+$(".quad").on("mouseup", function() {
+  $(this).removeClass("on");  
+});
+
+
+</script>
+
+
+
+
+
 </body>
 </html>
