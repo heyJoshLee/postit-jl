@@ -13,7 +13,7 @@ PostitTemplate::Application.routes.draw do
       post :vote
     end
 
-    resources :comments, only: [:create] do
+    resources :comments, only: [:create, :destroy] do
       member do
         post "vote"
       end

@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
 
   before_action :set_post, only: [:create]
+
   def create
     @comment = @post.comments.build(comment_params)
     @comment.creator = User.find(session[:user_id])
@@ -21,6 +22,16 @@ class CommentsController < ApplicationController
       format.js
     end 
 
+  end
+
+  def destroy
+    @comment  = Comment.find(params[:id])
+    
+    @comment.destroy
+    
+    flash[:notice] = "Comment deleted"
+
+    redirect_to :back
   end
 
   private

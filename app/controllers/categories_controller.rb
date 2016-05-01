@@ -19,7 +19,7 @@ class CategoriesController < ApplicationController
   end
 
   def show 
-    @category = Category.find(params[:id ])
+    @category = Category.find_by( slug: params[:id ])
 
     @page = params[:page] || 1
     @limit = 2
