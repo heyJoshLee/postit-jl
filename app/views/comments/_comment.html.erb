@@ -3,7 +3,7 @@
   <div class="well span0">
 
     <% if logged_in? %>
-      <%= link_to vote_post_comment_path(@post, comment, vote: true), method: "post", remote: true do %>
+      <%= link_to vote_post_comment_path(@post || comment.post, comment, vote: true), method: "post", remote: true do %>
         <i class="icon-arrow-up"></i>
       <% end %>
     <% end %>
@@ -12,7 +12,7 @@
     <span id="post_<%=comment.id%>_votes"><%= comment.total_votes %></span>
   </p>
     <% if logged_in? %>
-      <%= link_to vote_post_comment_path(@post, comment, vote: false), method: "post", remote: true do %>
+      <%= link_to vote_post_comment_path(@post || comment.post, comment, vote: false), method: "post", remote: true do %>
         <i class="icon-arrow-down"></i>
       <% end %>
     <% end %>
