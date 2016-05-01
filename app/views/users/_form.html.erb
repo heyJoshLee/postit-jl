@@ -1,0 +1,17 @@
+<%= form_for @user, html: {class: "well span8"} do |f| %>
+
+<%= render "shared/errors", obj: @user %>
+
+<%= f.label :username %>
+<%= f.text_field :username %>
+
+<%= f.label :password %>
+<%= f.password_field :password %>
+
+<%= f.label :time_zone %>
+<%= f.time_zone_select :time_zone, ActiveSupport::TimeZone.us_zones, default: Time.zone.name %>
+
+<br />
+<%= f.submit "Register account", class: "btn btn-primary" %>
+
+<% end %>
